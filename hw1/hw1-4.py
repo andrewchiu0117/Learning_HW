@@ -1,5 +1,5 @@
 import numpy as np
-def read_data():
+def read_data(): #讀檔案
     f = open("breast-cancer-wisconsin.data", "r")
     data = []
     for line in f:
@@ -13,9 +13,18 @@ def read_data():
 def main():
     data=read_data()
     #print(data)
-    x=np.array(data).T
-    #print(x)
-    print(np.around(np.cov(x),2))
+    v1=np.array(data).T
+    v3=np.corrcoef(v1)
+    print(np.around(v3, 2))
+    for x in range(9):
+        count=[]
+        for y in range(9):
+            if v3[x][y] > 0.5 and x!=y:
+                count.append(y+2)
+        if len(count)!=0:
+            print(x+2,"has strong connection with",count)
+        else:
+            print(x+2,"has no strong connection")
 
 if __name__ == "__main__":
     main()

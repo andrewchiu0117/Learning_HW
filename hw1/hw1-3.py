@@ -1,5 +1,5 @@
 import numpy
-def read_data():
+def read_data(): #讀資料
     f = open("breast-cancer-wisconsin.data", "r")
     count = 0
     data = dict()
@@ -11,7 +11,7 @@ def read_data():
     f.close()
     return data
     
-def shuffle_split(data):
+def shuffle_split(data): #random後分裂
     import random
     data_test=[]
     data_train=[]
@@ -25,16 +25,16 @@ def shuffle_split(data):
     return data_test,data_train
 
 
-def euclidean_distance(m1, m2):
+def euclidean_distance(m1, m2): #算距離
     v1=numpy.array(m1)
     v2=numpy.array(m2)
     distance = numpy.linalg.norm(v1 - v2)
     return distance
 
-def takeSecond(elem):
+def takeSecond(elem): #去第二位
     return elem[1]
 
-def final_print(K_array):
+def final_print(K_array): #print
     import matplotlib.pyplot as plt
     print(K_array)
     K_out=[3,4,5,6,7,8,9,10,11,12,13,14,15]
